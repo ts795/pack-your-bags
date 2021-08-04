@@ -82,8 +82,8 @@ body {
   top: 90%;
   left: 1.5%;
   width: 30%;
-  background: transparent;
-  color: rgb(108, 117, 125);
+  background-color: rgb(108, 117, 125);
+  color: white;
   border-color: rgb(108, 117, 125);
   border-style: solid;
 }
