@@ -59,3 +59,32 @@ body {
 #login-logo {
   max-width: 500px;
 }
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar {
+  /* Mint cream color */
+  background: white;
+  /* Set position to be on the left */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Fill the view port */
+  height: 100vh;
+  width: 33%;
+}
+
+#add-trip-button {
+  position: fixed;
+  top: 90%;
+  left: 1.5%;
+  width: 30%;
+  background: transparent;
+  color: rgb(108, 117, 125);
+  border-color: rgb(108, 117, 125);
+  border-style: solid;
+}
+
