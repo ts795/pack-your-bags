@@ -13,8 +13,12 @@
                     <input type="password" class="form-control" id="floatingPassword" placeholder="PASSWORD">
                     <label class="sign-in-label" for="floatingPassword">PASSWORD</label>
                 </div>
+                {{#if signingUp }}
+                <button id="sign-up-button" class="w-100 btn btn-lg bg-secondary mt-5" type="submit">Sign Up</button>
+                {{else}}
                 <a href="/signup" id="create-account-link" class="float-end">CREATE AN ACCOUNT</a>
                 <button id="sign-in-button" class="w-100 btn btn-lg bg-secondary" type="submit">Sign in</button>
+                {{/if}}
             </form>
         </div>
     </div>
