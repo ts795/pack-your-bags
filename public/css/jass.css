@@ -47,7 +47,7 @@ body {
   background-color:rgba(250, 249, 246, 0.5);
 }
 
-#sign-in-button {
+#sign-in-button, #sign-up-button {
   color: white;
 }
 
