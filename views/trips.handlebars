@@ -5,6 +5,15 @@
             <div class="container d-flex flex-column mt-auto">
                 <div class="row">
                     <div class="col-12">
+                        <ul class="list-group">
+                            {{#each trips }}
+                            <li class="list-group-item m-2 trip" data-trip-id="{{ this.id }}"> {{ this.location }} </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
                         <button id="add-trip-button" class="w-100 btn btn-lg bg-secondary" type="button">Add
                             Trip</button>
                     </div>
