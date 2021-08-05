@@ -22,3 +22,8 @@ $("#delete-confirmation-button").click(async function () {
         alert('Failed to delete trip.');
     }
 });
+
+$(document).on("click", ".trip", function () {
+    var tripId = $(this).attr("data-trip-id");
+    document.location.replace('/trip/' + tripId);
+});
