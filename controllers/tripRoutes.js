@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Trip } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
@@ -21,9 +22,19 @@ router.get('/add', async (req, res) => {
 // add a trip
 router.post('/add', async (req, res) => {
     // TODO: Fill in
+    try {
+        console.log("Add Trip" + JSON.stringify(req.session));
+    const tripData = await Trip.create({
+        location: req.body.location,
+        date_start: req.body.startDate,
+        date_end: req.body.endDate,
+        user_id: req.session.user_id 
+    })
     // Client will send these fields in the body: location, startDate, endDate
     // Example formats: LA, 08/13/2021, 08/20/2021
-    res.json({ id: 1 });
+    res.status(200).json(tripData);} catch (err) {
+        res.status(400).json(err);
+      }
 });
 
 router.get('/:id', async (req, res) => {
