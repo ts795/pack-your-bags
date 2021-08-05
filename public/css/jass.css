@@ -10,10 +10,6 @@ body {
   margin: auto;
 }
 
-.form-signin .checkbox {
-  font-weight: 400;
-}
-
 .form-signin .form-floating:focus-within {
   z-index: 2;
 }
@@ -47,7 +43,7 @@ body {
   background-color:rgba(250, 249, 246, 0.5);
 }
 
-#sign-in-button, #sign-up-button {
+#sign-in-button, #sign-up-button, #add-button {
   color: white;
 }
 
@@ -66,7 +62,6 @@ body {
 }
 
 #sidebar {
-  /* Mint cream color */
   background: white;
   /* Set position to be on the left */
   position: fixed;
@@ -87,4 +82,3 @@ body {
   border-color: rgb(108, 117, 125);
   border-style: solid;
 }
-
