@@ -33,8 +33,8 @@ router.post('/login', async (req, res) => {
             console.log(userData);
             req.session.user_id = userData.dataValues.id;
             console.log(req.session);
-        })
-        res.status(200).json({ user: userData, message: "You are now logged in!" })
+            res.status(200).json({ user: userData, message: "You are now logged in!" })
+        });
 
     } catch (err) {
         console.log(err);
