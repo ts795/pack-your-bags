@@ -52,8 +52,18 @@ router.post('/add', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        // TODO: fill in
+        // Get the trips for the current user
+        const tripData = await Trip.findAll({
+            where: {
+                user_id: req.session.user_id
+            }
+        });
+        const trips = tripData.map((trip) =>
+            trip.get({ plain: true })
+        );
+
         res.render('trips', {
+            trips
         });
     } catch (err) {
         res.status(500).json(err);
