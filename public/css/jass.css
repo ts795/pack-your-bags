@@ -67,7 +67,7 @@ body {
   height: 100vh;
 }
 
-#add-trip-button {
+#add-trip-button, #sign-out-button {
   background-color: rgb(108, 117, 125);
   color: white;
   border-color: rgb(108, 117, 125);
