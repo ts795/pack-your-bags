@@ -6,6 +6,7 @@ router.post('/', async (req, res) => {
     // TODO: Fill in
     res.send(200).json({ message: "Successful login" });
 });
+// ========= LOGIN =========== //
 
 router.post('/login', async (req, res) => {
     try {
@@ -41,5 +42,39 @@ router.post('/login', async (req, res) => {
         res.status(500).json(err);
     }
 })
+
+// ========= SIGNUP =========== //
+
+router.post('/', async (req, res) => {
+    try {
+        const dbUserData = await User.create({
+            username: req.body.username,
+            password: req.body.password,
+        });
+
+        req.session.save(() => {
+            req.session.loggedIn = true;
+
+            res.status(200).json(dbUserData);
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+// ========= LOGOUT =========== //
+
+router.post('/logout', (req, res) => {
+    console.log(req.session)
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(405).end();
+    }
+});
+
 
 module.exports = router;
