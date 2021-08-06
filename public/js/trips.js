@@ -48,3 +48,21 @@ $(function () {
         firstDay: 1
     });
 });
+
+$('input:checkbox').change(
+    async function () {
+        var completion = $(this).is(':checked');
+        var itemId = $(this).attr("data-item-id");
+        const response = await fetch('/api/items/' + itemId, {
+            body: JSON.stringify({ completion }),
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            // Show the home page
+            console.log("Successfully updated status");
+        } else {
+            alert('Failed to update check box');
+        }
+    });
