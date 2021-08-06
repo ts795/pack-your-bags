@@ -19,7 +19,10 @@ const hbs = exphbs.create({ helpers });
 const sess = {
     // TODO: Add this to an environment variable on Heroku and .env
     secret: 'Super secret secret',
-    cookie: {},
+    cookie: {
+             maxAge: 60*30*1000,
+    },
+    rolling: true,
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
