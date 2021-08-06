@@ -17,7 +17,7 @@ const itemData = [
   },
   {
     item_title: 'Scarves',
-    item_description: 'Bring two just in case',
+    item_description: 'Bring two just incase',
     date_needby: 'Dec 10, 2021',
     completion: true,
     trip_id: 2,

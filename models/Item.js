@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Item extends Model {}
+class Item extends Model { }
 
 Item.init(
   {
@@ -24,8 +24,8 @@ Item.init(
       allowNull: false,
     },
     completion: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
     trip_id: {
       type: DataTypes.INTEGER,
