@@ -36,7 +36,7 @@ $("#sign-out-button").click(async function () {
     } else {
         alert('Failed to log out');
     }
-
+});
 $(document).on("click", ".trip", function () {
     var tripId = $(this).attr("data-trip-id");
     document.location.replace('/trip/' + tripId);
