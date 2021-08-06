@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Trip extends Model {}
+class Trip extends Model { }
 
 Trip.init(
   {
@@ -20,8 +20,8 @@ Trip.init(
       allowNull: false,
     },
     date_end: {
-        type: DataTypes.DATE,
-        allowNull: false,
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,

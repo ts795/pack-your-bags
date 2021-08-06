@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Route for signing up a new user
+// ========= SIGNUP =========== //
 router.get('/signup', async (req, res) => {
     try {
         res.render('homepage', {
