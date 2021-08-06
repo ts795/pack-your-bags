@@ -56,6 +56,27 @@
                     {{/each}}
                 </ul>
             </div>
+            <div class="row">
+                {{#if displayItemInput}}
+                <form>
+                <div class="form-floating w-75">
+                    <textarea class="form-control" placeholder="Item title" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">Item title</label>
+                </div>
+                <div class="form-floating w-75">
+                    <textarea class="form-control" placeholder="Item description" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">Description</label>   
+                </div>
+                <div class="form-floating w-25">
+                    <input type="text" class="form-control" id="needByDate" placeholder="Need by">
+                    <label class="sign-in-label" for="floatingInput">Need by: </label>
+                </div>
+                <button id="add-item-button" class="w-20 btn btn-lg bg-secondary" type="submit" class="float-start">Submit!</button>
+                </form>
+
+                
+                {{/if}}
+            </div>
         </div>
     </div>
     <div class="modal fade" id="confirmDeleteTripModal" tabindex="-1" aria-labelledby="exampleModalLabel"

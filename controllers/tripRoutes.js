@@ -75,7 +75,8 @@ router.get('/:id', withAuth, async (req, res) => {
 
         res.render('trips', {
             trips,
-            tripToDisplayItems
+            tripToDisplayItems,
+            displayItemInput: true,
         });
     } catch (err) {
         res.status(500).json(err);

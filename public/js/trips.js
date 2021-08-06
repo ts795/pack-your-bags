@@ -41,3 +41,10 @@ $(document).on("click", ".trip", function () {
     var tripId = $(this).attr("data-trip-id");
     document.location.replace('/trip/' + tripId);
 });
+
+$(function () {
+    $("#needByDate").datepicker({
+        showWeek: true,
+        firstDay: 1
+    });
+});
