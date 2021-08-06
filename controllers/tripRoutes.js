@@ -62,15 +62,20 @@ router.get('/:id', withAuth, async (req, res) => {
         const trips = tripData.map((trip) =>
             trip.get({ plain: true })
         );
+        var tripToDisplayItems = [];
         // Convert the date to a string to display in the template
         for (var tripsIdx = 0; tripsIdx < trips.length; tripsIdx++) {
             for (var itemsIdx = 0; itemsIdx < trips[tripsIdx].items.length; itemsIdx++) {
                 trips[tripsIdx].items[itemsIdx].date_needby = trips[tripsIdx].items[itemsIdx].date_needby.toLocaleDateString();
             }
+            if (trips[tripsIdx].id === parseInt(req.params.id)) {
+                tripToDisplayItems = trips[tripsIdx].items;
+            }
         }
 
         res.render('trips', {
-            trips
+            trips,
+            tripToDisplayItems
         });
     } catch (err) {
         res.status(500).json(err);

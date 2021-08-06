@@ -45,8 +45,7 @@
             </div>
             <div class="row">
                 <ul class="list-group">
-                    {{#each trips }}
-                    {{#each this.items }}
+                    {{#each tripToDisplayItems }}
                     <li class="list-group-item m-1">
                         <input class="form-check-input me-1" type="checkbox" value="" checked="{{ this.completion }}"
                             aria-label="..." data-item-id="{{ this.id }}">
@@ -54,7 +53,6 @@
                         <p> {{ this.item_description }} </p>
                         <p> Needed by: {{ this.date_needby }} </p>
                     </li>
-                    {{/each}}
                     {{/each}}
                 </ul>
             </div>
