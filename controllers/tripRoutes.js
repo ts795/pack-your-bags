@@ -47,11 +47,29 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// delete a trip
+// ===== DELETE A TRIP ===== //
+
 router.delete('/:id', async (req, res) => {
-    // TODO: fill in
-    console.log("Received delete for trip ID " + req.params.id);
-    res.json({ message: "Delete was successful" });
+    try {
+        let dbTripData = await Trip.findByPk(req.params.id);
+        if (!dbTripData) {
+            res.status(400).json({ message: 'No trip found with that id!' });
+            return;
+        } else if (dbTripData.get({plain: true}).user_id !== req.session.user_id) {
+            res.status(400).json({ message: 'Trip cannot be deleted' });
+        } else {
+            dbTripData = await Trip.destroy(
+                {
+                where: {
+                    id: req.params.id,
+                },
+            });
+            res.status(200).json({ message: 'Delete the trip successfully!' });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;
