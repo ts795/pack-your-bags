@@ -72,7 +72,7 @@ router.get('/:id', withAuth, async (req, res) => {
                 tripToDisplayItems = trips[tripsIdx].items;
             }
         }
-
+        console.log(tripToDisplayItems)
         res.render('trips', {
             trips,
             tripToDisplayItems,

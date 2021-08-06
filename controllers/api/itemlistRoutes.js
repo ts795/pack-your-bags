@@ -4,11 +4,13 @@ const { Trip, Item } = require("../../models");
 // ====== CREATING A LIST ====== // 
 router.post('/', async (req, res) => {
     try {
+        console.log("=====================")
+        console.log(req.body.completion)
         const itemData = await Item.create({
             item_title: req.body.item_title,
             item_description: req.body.item_description,
             date_needby: req.body.date_needby,
-            completion: req.body.completion,
+            completion: JSON.parse(req.body.completion),
             trip_id: req.body.trip_id,
         })
         res.status(200).json(itemData);
