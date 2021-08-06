@@ -69,6 +69,8 @@ router.get('/:id', withAuth, async (req, res) => {
                 trips[tripsIdx].items[itemsIdx].date_needby = trips[tripsIdx].items[itemsIdx].date_needby.toLocaleDateString();
             }
             if (trips[tripsIdx].id === parseInt(req.params.id)) {
+                // This is the active trip so add a property that handlebars can use to indicate that it is an active trip
+                trips[tripsIdx].activelyDisplayedTrip = true;
                 tripToDisplayItems = trips[tripsIdx].items;
             }
         }
