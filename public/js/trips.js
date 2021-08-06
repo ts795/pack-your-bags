@@ -48,3 +48,35 @@ $(function () {
         firstDay: 1
     });
 });
+
+
+const listFormHandler = async (event) => {
+    event.preventDefault();
+
+    const item_title = document.querySelector('#floatingTextarea').value.trim();
+    const item_description = document.querySelector('#floatingItemDescription').value.trim();
+    const date_needby = document.querySelector('#needByDate').value.trim();
+    var completion = false;
+    var urlComponents = window.location.href.split('/');
+    var trip_id = urlComponents[urlComponents.length - 1];
+
+    // Make sure the itemTitleForm and itemDescriptionForm are filled in
+    if (item_title) {
+        const response = await fetch('/api/items', {
+            method: 'POST',
+            body: JSON.stringify({item_title, item_description, date_needby,completion, trip_id}),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            document.location.replace('/trip/'+ trip_id);
+        } else {
+            alert('Failed to add items in.');
+        }
+    }
+};
+var formElement = document.querySelector('#addItemForm');
+
+if (formElement) {
+    formElement.addEventListener('submit', listFormHandler);
+}
