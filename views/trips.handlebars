@@ -52,8 +52,13 @@
                 <ul class="list-group">
                     {{#each tripToDisplayItems }}
                     <li class="list-group-item m-1">
-                        <input class="form-check-input me-1" type="checkbox" value="" checked="{{ this.completion }}"
-                            aria-label="..." data-item-id="{{ this.id }}">
+                        {{#if this.completion}}
+                        <input class="form-check-input me-1" type="checkbox" value="" checked="true" aria-label="..."
+                            data-item-id="{{ this.id }}">
+                        {{else}}
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."
+                            data-item-id="{{ this.id }}">
+                        {{/if}}
                         {{ this.item_title }}
                         <p> {{ this.item_description }} </p>
                         <p> Needed by: {{ this.date_needby }} </p>
