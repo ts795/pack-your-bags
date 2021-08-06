@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { Trip } = require('../models');
+const withAuth = require('../utils/auth');
 
-// Get the trips for the user
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         // Get the trips for the current user
         const tripData = await Trip.findAll({
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/add', async (req, res) => {
+router.get('/add', withAuth, async (req, res) => {
     try {
         res.render('addTrip', {
         });
@@ -32,7 +32,7 @@ router.get('/add', async (req, res) => {
 });
 
 // add a trip
-router.post('/add', async (req, res) => {
+router.post('/add', withAuth, async (req, res) => {
     // TODO: Fill in
     try {
         console.log("Add Trip" + JSON.stringify(req.session));
@@ -50,7 +50,7 @@ router.post('/add', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         // Get the trips for the current user
         const tripData = await Trip.findAll({
@@ -72,7 +72,7 @@ router.get('/:id', async (req, res) => {
 
 // ===== DELETE A TRIP ===== //
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         let dbTripData = await Trip.findByPk(req.params.id);
         if (!dbTripData) {
