@@ -27,7 +27,8 @@
                 <div class="col-12 m-0 p-0">
                     <nav class="navbar navbar-light bg-transparent w-100">
                         <div class="container d-flex">
-                            <button id="sign-out-button" class="w-20 btn btn-lg bg-secondary" type="button" class="float-start">Sign out</button>
+                            <button id="sign-out-button" class="w-20 btn btn-lg bg-secondary" type="button"
+                                class="float-start">Sign out</button>
                             <button type="button" id="delete-a-trip" class="btn btn-secondary" data-bs-toggle="modal"
                                 data-bs-target="#confirmDeleteTripModal" class="float-end">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -41,6 +42,21 @@
                         </div>
                     </nav>
                 </div>
+            </div>
+            <div class="row">
+                <ul class="list-group">
+                    {{#each trips }}
+                    {{#each this.items }}
+                    <li class="list-group-item m-1">
+                        <input class="form-check-input me-1" type="checkbox" value="" checked="{{ this.completion }}"
+                            aria-label="..." data-item-id="{{ this.id }}">
+                        {{ this.item_title }}
+                        <p> {{ this.item_description }} </p>
+                        <p> Needed by: {{ this.date_needby }} </p>
+                    </li>
+                    {{/each}}
+                    {{/each}}
+                </ul>
             </div>
         </div>
     </div>
