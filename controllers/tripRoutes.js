@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Trip } = require('../models');
+const { Trip, Item } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -56,14 +56,26 @@ router.get('/:id', withAuth, async (req, res) => {
         const tripData = await Trip.findAll({
             where: {
                 user_id: req.session.user_id
-            }
+            },
+            include: { model: Item }
         });
         const trips = tripData.map((trip) =>
             trip.get({ plain: true })
         );
+        var tripToDisplayItems = [];
+        // Convert the date to a string to display in the template
+        for (var tripsIdx = 0; tripsIdx < trips.length; tripsIdx++) {
+            for (var itemsIdx = 0; itemsIdx < trips[tripsIdx].items.length; itemsIdx++) {
+                trips[tripsIdx].items[itemsIdx].date_needby = trips[tripsIdx].items[itemsIdx].date_needby.toLocaleDateString();
+            }
+            if (trips[tripsIdx].id === parseInt(req.params.id)) {
+                tripToDisplayItems = trips[tripsIdx].items;
+            }
+        }
 
         res.render('trips', {
-            trips
+            trips,
+            tripToDisplayItems
         });
     } catch (err) {
         res.status(500).json(err);
@@ -78,15 +90,15 @@ router.delete('/:id', withAuth, async (req, res) => {
         if (!dbTripData) {
             res.status(400).json({ message: 'No trip found with that id!' });
             return;
-        } else if (dbTripData.get({plain: true}).user_id !== req.session.user_id) {
+        } else if (dbTripData.get({ plain: true }).user_id !== req.session.user_id) {
             res.status(400).json({ message: 'Trip cannot be deleted' });
         } else {
             dbTripData = await Trip.destroy(
                 {
-                where: {
-                    id: req.params.id,
-                },
-            });
+                    where: {
+                        id: req.params.id,
+                    },
+                });
             res.status(200).json({ message: 'Delete the trip successfully!' });
         }
     } catch (err) {
