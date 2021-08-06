@@ -23,6 +23,20 @@ $("#delete-confirmation-button").click(async function () {
     }
 });
 
+// Add a sign out
+$("#sign-out-button").click(async function () {
+    const response = await fetch('/api/users/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        // Show the home page
+        document.location.replace('/');
+    } else {
+        alert('Failed to log out');
+    }
+
 $(document).on("click", ".trip", function () {
     var tripId = $(this).attr("data-trip-id");
     document.location.replace('/trip/' + tripId);
