@@ -1,8 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="form-signin col-4">
+             <div class="back-btn-area">
+                <button id="trip-back-button" class="btn btn-sm bg-secondary">Back</button>
+                </div>
+
             <form class="sign-in-form p-3" id="add-trip-form">
                 <div class="form-floating m-2">
+               
                     <input type="text" class="form-control" id="location" placeholder="LOCATION">
                     <label class="sign-in-label" for="floatingInput">Location</label>
                 </div>
@@ -15,6 +20,7 @@
                     <label class="sign-in-label" for="floatingInput">End Date</label>
                 </div>
                 <button id="add-button" class="w-100 btn btn-lg bg-secondary" type="submit">Add</button>
+
             </form>
         </div>
     </div>

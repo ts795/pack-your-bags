@@ -13,6 +13,11 @@ $(function () {
     });
 });
 
+// Go back to the main homepage
+$("#trip-back-button").click(function () {
+    document.location.replace('/trip');
+});
+
 $("#add-trip-form").submit(async function (event) {
     event.preventDefault();
     // Get form information to post
