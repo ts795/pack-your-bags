@@ -3,6 +3,10 @@ const { Trip, Item } = require('../models');
 const withAuth = require('../utils/auth');
 const unsplashApi = require('../utils/apiimage.js');
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
 router.get('/', withAuth, async (req, res) => {
     try {
         // Get the trips for the current user
@@ -82,7 +86,7 @@ router.get('/:id', withAuth, async (req, res) => {
         if(tripLocation){
             var images = await unsplashApi(tripLocation);
             if(images.length){
-                backgroundImage = images[0];
+                backgroundImage = images[getRandomInt(images.length)];
             }
         }
         
