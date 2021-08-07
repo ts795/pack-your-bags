@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Trip, Item } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // ====== CREATING A LIST ====== // 
 router.post('/', async (req, res) => {
@@ -59,7 +60,35 @@ router.put('/:id', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
+
 });
 
+// ===== DELETE ITEM ===== //
+
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+        let dbItemData = await Item.findByPk(req.params.id, {
+            include: { model: Trip }
+        });
+        console.log(dbItemData)
+        if (!dbItemData) {
+            res.status(400).json({ message: 'No item found with that id!' });
+            return;
+        } else if (dbItemData.get({ plain: true }).trip.user_id !== req.session.user_id) {
+            res.status(400).json({ message: 'Item cannot be deleted' });
+        } else {
+            dbItemData = await Item.destroy(
+                {
+                    where: {
+                        id: req.params.id,
+                    },
+                });
+            res.status(200).json({ message: 'Delete the item successfully!' });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;
