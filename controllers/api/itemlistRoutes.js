@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
             item_description: req.body.item_description,
             date_needby: req.body.date_needby,
             completion: JSON.parse(req.body.completion),
-            Item_id: req.body.Item_id,
+            trip_id: req.body.trip_id,
         })
         res.status(200).json(itemData);
     } catch (err) {
