@@ -95,3 +95,22 @@ $('input:checkbox').change(
             alert('Failed to update check box');
         }
     });
+
+$(document).on("click", ".delete-item-container", async function () {
+    var itemId = $(this).attr("data-item-id");
+    // Delete the trip
+    // Get the ID for the trip from the route
+    var urlComponents = window.location.href.split('/');
+    var tripId = urlComponents[urlComponents.length - 1];
+    const response = await fetch('/api/items/' + itemId, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        // Refresh the trip
+        document.location.replace('/trip/' + tripId);
+    } else {
+        alert('Failed to delete item: ' + itemId);
+    }
+});
