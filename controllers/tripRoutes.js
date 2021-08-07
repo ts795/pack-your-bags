@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Trip, Item } = require('../models');
 const withAuth = require('../utils/auth');
-const apiLink = require('../utils/apiimage.js');
 const unsplashApi = require('../utils/apiimage.js');
 
 router.get('/', withAuth, async (req, res) => {
