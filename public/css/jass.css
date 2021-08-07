@@ -62,9 +62,7 @@ body {
 }
 
 #sidebar {
-  background: white;
-  /* Fill the view port */
-  height: 100vh;
+  background: white;  
 }
 
 #add-trip-button, #sign-out-button {
@@ -92,4 +90,11 @@ body {
 .trip-list-item {
   background-color:rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px)
+}
+
+@media only screen and (min-width: 576px) {
+    #sidebar {
+      /* Fill the view port */
+     height: 100vh;
+    }
 }
