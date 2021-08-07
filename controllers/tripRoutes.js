@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Trip, Item } = require('../models');
 const withAuth = require('../utils/auth');
+const apiLink = require('../utils/apiimage.js');
+const unsplashApi = require('../utils/apiimage.js');
 
 router.get('/', withAuth, async (req, res) => {
     try {
@@ -63,6 +65,7 @@ router.get('/:id', withAuth, async (req, res) => {
             trip.get({ plain: true })
         );
         var tripToDisplayItems = [];
+        var tripLocation;
         // Convert the date to a string to display in the template
         for (var tripsIdx = 0; tripsIdx < trips.length; tripsIdx++) {
             for (var itemsIdx = 0; itemsIdx < trips[tripsIdx].items.length; itemsIdx++) {
@@ -72,13 +75,23 @@ router.get('/:id', withAuth, async (req, res) => {
                 // This is the active trip so add a property that handlebars can use to indicate that it is an active trip
                 trips[tripsIdx].activelyDisplayedTrip = true;
                 tripToDisplayItems = trips[tripsIdx].items;
+                tripLocation = trips[tripsIdx].location;
             }
         }
         console.log(tripToDisplayItems)
+        var backgroundImage;
+        if(tripLocation){
+            var images = await unsplashApi(tripLocation);
+            if(images.length){
+                backgroundImage = images[0];
+            }
+        }
+        
         res.render('trips', {
             trips,
             tripToDisplayItems,
             displayItemInput: true,
+            backgroundImage
         });
     } catch (err) {
         res.status(500).json(err);
