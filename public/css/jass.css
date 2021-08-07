@@ -81,3 +81,10 @@ body {
 .trip {
   cursor: pointer;
 }
+
+.delete-item-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: #cc6666;
+}

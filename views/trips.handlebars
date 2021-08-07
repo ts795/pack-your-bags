@@ -49,22 +49,33 @@
                 </div>
             </div>
             <div class="row">
-                <ul class="list-group">
-                    {{#each tripToDisplayItems }}
-                    <li class="list-group-item m-1">
-                        {{#if this.completion}}
-                        <input class="form-check-input me-1" type="checkbox" value="" checked="true" aria-label="..."
-                            data-item-id="{{ this.id }}">
-                        {{else}}
-                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."
-                            data-item-id="{{ this.id }}">
-                        {{/if}}
-                        {{ this.item_title }}
-                        <p> {{ this.item_description }} </p>
-                        <p> Needed by: {{ this.date_needby }} </p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <div class="item-container col-11 m-0 p-0">
+                    <ul class="list-group">
+                        {{#each tripToDisplayItems }}
+                        <li class="list-group-item mr-0">
+                            {{#if this.completion}}
+                            <input class="form-check-input me-1" type="checkbox" value="" checked="true"
+                                aria-label="..." data-item-id="{{ this.id }}">
+                            {{else}}
+                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."
+                                data-item-id="{{ this.id }}">
+                            {{/if}}
+                            {{ this.item_title }}
+                            <p> {{ this.item_description }} </p>
+                            <p> Needed by: {{ this.date_needby }} </p>
+                            <div class="delete-item-container col-1 bg-white container-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" fill="currentColor" class="bi bi-x" 
+                        viewBox="0 0 16 16" >
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </div>
+                        </li>
+                        {{/each}}
+               </ul>
+                </div>
+                
+
             </div>
             <div class="row">
                 {{#if displayItemInput}}
