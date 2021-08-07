@@ -78,7 +78,7 @@ body {
   color: white;
 }
 
-.trip {
+.trip, .delete-item-container {
   cursor: pointer;
 }
 
