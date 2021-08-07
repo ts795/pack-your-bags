@@ -91,10 +91,21 @@ body {
   background-color:rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px)
 }
+.bi-x {
+  width: 80%; 
+  height: 80%;
+}
 
 @media only screen and (min-width: 576px) {
     #sidebar {
       /* Fill the view port */
      height: 100vh;
     }
+}
+@media only screen and (max-width: 576px) {
+  .bi-x {
+    /* Fill the view port */
+   height: 10%;
+   width: 10%;
+  }
 }
