@@ -26,5 +26,5 @@ async function unsplashApi (location){
 // console.log(unsplashApi("hawaii"))
 // unsplashApi("hawaii")
 
-
+module.exports = unsplashApi;
     
