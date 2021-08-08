@@ -17,8 +17,7 @@ const hbs = exphbs.create({ helpers });
 
 // Initialization object for the session, set parameters such as the database to use
 const sess = {
-    // TODO: Add this to an environment variable on Heroku and .env
-    secret: 'Super secret secret',
+    secret: process.env.SESSION_SECRET,
     cookie: {
              maxAge: 60*30*1000,
     },

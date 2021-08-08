@@ -20,6 +20,7 @@ DB_NAME=pyb_db
 DB_USER=root
 DB_PASSWORD=<your mysql password>
 UNSPLASH_KEY=<your unsplash api key>
+SESSION_SECRET=<your session secret>
 ```
 Then source db/schema.sql in the mysql shell.
 After that type:

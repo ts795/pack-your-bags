@@ -38,7 +38,6 @@ router.get('/add', withAuth, async (req, res) => {
 
 // add a trip
 router.post('/add', withAuth, async (req, res) => {
-    // TODO: Fill in
     try {
         console.log("Add Trip" + JSON.stringify(req.session));
         const tripData = await Trip.create({
