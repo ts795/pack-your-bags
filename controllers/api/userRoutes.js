@@ -42,6 +42,18 @@ router.post('/login', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
+        // Check if the username is available
+        const userData = await User.findOne({
+            where: {
+                username: req.body.username
+            },
+        });
+
+        if (userData) {
+            res.status(409).json({"message": "Username " + req.body.username + " is not available."});
+            return;
+        }
+
         const dbUserData = await User.create({
             username: req.body.username,
             password: req.body.password,
