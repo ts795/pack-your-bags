@@ -18,31 +18,17 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <style>
-        body {
+        body { {{#if backgroundImage }}
 
-                {
-                    {
-                    #if backgroundImage
-                }
-            }
+        background-image: url("{{backgroundImage}}");
 
-            background-image: url("{{backgroundImage}}");
+            {{else}}
 
-                {
-                    {
-                    else
-                }
-            }
+        background-image: url("/images/ian-dooley-3NCA3tbaE5I-unsplash.jpg");
 
-            background-image: url("/images/ian-dooley-3NCA3tbaE5I-unsplash.jpg");
+            {{/if }}
 
-                {
-                    {
-                    /if
-                }
-            }
-
-            background-size: cover;
+        background-size: cover;
         }
     </style>
 
