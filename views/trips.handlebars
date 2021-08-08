@@ -68,7 +68,9 @@
                             {{/if}}
                             <h4 class="item-title-font">{{ this.item_title }}</h4>
                             <p> {{ this.item_description }} </p>
+                            {{#if this.date_needby }}
                             <p> Needed by: {{ this.date_needby }} </p>
+                            {{/if}}
                             <div class="delete-item-container col-12 col-sm-1 container-sm"
                                 data-item-id="{{ this.id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x"

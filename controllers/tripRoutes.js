@@ -71,7 +71,10 @@ router.get('/:id', withAuth, async (req, res) => {
         // Convert the date to a string to display in the template
         for (var tripsIdx = 0; tripsIdx < trips.length; tripsIdx++) {
             for (var itemsIdx = 0; itemsIdx < trips[tripsIdx].items.length; itemsIdx++) {
-                trips[tripsIdx].items[itemsIdx].date_needby = trips[tripsIdx].items[itemsIdx].date_needby.toLocaleDateString();
+                if (trips[tripsIdx].items[itemsIdx].date_needby) {
+                    // Convert to a string if null
+                    trips[tripsIdx].items[itemsIdx].date_needby = trips[tripsIdx].items[itemsIdx].date_needby.toLocaleDateString();
+                }
             }
             if (trips[tripsIdx].id === parseInt(req.params.id)) {
                 // This is the active trip so add a property that handlebars can use to indicate that it is an active trip

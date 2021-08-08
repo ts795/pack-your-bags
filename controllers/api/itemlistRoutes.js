@@ -4,9 +4,14 @@ const withAuth = require('../../utils/auth');
 
 // ====== CREATING A LIST ====== // 
 router.post('/', async (req, res) => {
+
     try {
         console.log("=====================")
-        console.log(req.body.completion)
+        console.log(req.body)
+        if (!req.body.date_needby) {
+            // Empty so set to null
+            req.body.date_needby = null;
+        }
         const itemData = await Item.create({
             item_title: req.body.item_title,
             item_description: req.body.item_description,
