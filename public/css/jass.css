@@ -1,6 +1,8 @@
 body {
   background-image: url("/images/ian-dooley-3NCA3tbaE5I-unsplash.jpg");
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .form-signin {
