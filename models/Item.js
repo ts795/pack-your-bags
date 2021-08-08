@@ -21,7 +21,7 @@ Item.init(
     },
     date_needby: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     completion: {
       type: DataTypes.BOOLEAN,
