@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12 col-sm-2 m-0 p-0 pr-sm-1">
+    <div class="col-12 col-sm-2 m-0 p-1">
         <!-- Sidebar -->
         <nav id="sidebar" class="navbar m-0">
             <div class="container d-flex flex-column">
@@ -26,7 +26,7 @@
             </div>
         </nav>
     </div>
-    <div class="col-12 col-sm-10 m-0 p-0 pl-sm-1">
+    <div class="col-12 col-sm-10 m-0 p-1">
         <div class="container m-0">
             <div class="row">
                 <div class="col-12 m-0 p-0">
@@ -63,11 +63,12 @@
                             {{ this.item_title }}
                             <p> {{ this.item_description }} </p>
                             <p> Needed by: {{ this.date_needby }} </p>
-                            <div class="delete-item-container col-12 col-sm-1 container-sm" data-item-id="{{ this.id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                    class="bi bi-x" viewBox="0 0 16 16">
+                            <div class="delete-item-container col-12 col-sm-1 container-sm"
+                                data-item-id="{{ this.id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x"
+                                    viewBox="0 0 16 16">
                                     <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                                 </svg>
                             </div>
                         </li>
