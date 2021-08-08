@@ -59,6 +59,8 @@
                     <ul class="list-group">
                         {{#each tripToDisplayItems }}
                         <li class="list-group-item mr-0 trip-list-item m-1">
+                            <div class="row">
+                            <div class="col-10 col-md-11">
                             {{#if this.completion}}
                             <input class="form-check-input me-1" type="checkbox" value="" checked="true"
                                 aria-label="..." data-item-id="{{ this.id }}">
@@ -67,18 +69,18 @@
                                 data-item-id="{{ this.id }}">
                             {{/if}}
                             <h4 class="item-title-font">{{ this.item_title }}</h4>
-                            <p> {{ this.item_description }} </p>
-                            {{#if this.date_needby }}
-                            <p> Needed by: {{ this.date_needby }} </p>
-                            {{/if}}
-                            <div class="delete-item-container col-12 col-sm-1 container-sm"
-                                data-item-id="{{ this.id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x"
-                                    viewBox="0 0 16 16">
+                            </div>
+                            <div class="delete-item-container col-2 col-md-1" data-item-id="{{ this.id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" opacity="0.5" class="bi bi-x" viewBox="0 0 16 16">
                                     <path
                                         d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                                 </svg>
                             </div>
+                            </div>
+                            <p> {{ this.item_description }} </p>
+                            {{#if this.date_needby }}
+                            <p> Needed by: {{ this.date_needby }} </p>
+                            {{/if}}
                         </li>
                         {{/each}}
                     </ul>
