@@ -5,13 +5,19 @@
             <div class="container d-flex flex-column">
                 <div class="row">
                     <div class="col-12">
-                        <ul class="list-group">
+                        <button id="sign-out-button" class="w-20 btn btn-lg bg-secondary mb-2" type="button">Sign
+                            out</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="list-group mb-2">
                             {{#each trips }}
                             {{#if this.activelyDisplayedTrip}}
-                            <li class="list-group-item m-2 trip active" data-trip-id="{{ this.id }}"> {{ this.location
+                            <li class="list-group-item trip active" data-trip-id="{{ this.id }}"> {{ this.location
                                 }} </li>
                             {{else}}
-                            <li class="list-group-item m-2 trip" data-trip-id="{{ this.id }}"> {{ this.location }} </li>
+                            <li class="list-group-item trip" data-trip-id="{{ this.id }}"> {{ this.location }} </li>
                             {{/if}}
                             {{/each}}
                         </ul>
@@ -32,8 +38,7 @@
                 <div class="col-12 m-0 p-0">
                     <nav class="navbar navbar-light bg-transparent w-100">
                         <div class="container d-flex">
-                            <button id="sign-out-button" class="w-20 btn btn-lg bg-secondary" type="button"
-                                class="float-start">Sign out</button>
+                            {{#if displayItemInput}}
                             <button type="button" id="delete-a-trip" class="btn btn-secondary" data-bs-toggle="modal"
                                 data-bs-target="#confirmDeleteTripModal" class="float-end">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -44,6 +49,7 @@
                                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                 </svg>
                             </button>
+                            {{/if}}
                         </div>
                     </nav>
                 </div>
@@ -52,7 +58,7 @@
                 <div class="item-container col-12 col-sm-11 m-0 p-0">
                     <ul class="list-group">
                         {{#each tripToDisplayItems }}
-                        <li class="list-group-item mr-0 trip-list-item">
+                        <li class="list-group-item mr-0 trip-list-item m-1">
                             {{#if this.completion}}
                             <input class="form-check-input me-1" type="checkbox" value="" checked="true"
                                 aria-label="..." data-item-id="{{ this.id }}">
@@ -81,16 +87,16 @@
             <div class="row">
                 {{#if displayItemInput}}
                 <form id="addItemForm">
-                    <div class="form-floating w-75">
+                    <div class="form-floating w-75 m-1">
                         <textarea class="form-control" placeholder="Item title" id="floatingTextarea"></textarea>
                         <label for="floatingTextarea">Item title</label>
                     </div>
-                    <div class="form-floating w-75">
+                    <div class="form-floating w-75 m-1">
                         <textarea class="form-control" placeholder="Item description"
                             id="floatingItemDescription"></textarea>
                         <label for="floatingItemDescription">Description</label>
                     </div>
-                    <div class="form-floating w-25">
+                    <div class="form-floating w-50 m-1">
                         <input type="text" class="form-control" id="needByDate" placeholder="Need by">
                         <label for="needByDate">Need by</label>
                     </div>
