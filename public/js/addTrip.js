@@ -26,19 +26,32 @@ $("#add-trip-form").submit(async function (event) {
     var endDate = $("#endDate").val();
 
     // Make sure all fields are filled in
-    if (location && startDate && endDate) {
-        const response = await fetch('/trip/add', {
-            method: 'POST',
-            body: JSON.stringify({ location, startDate, endDate }),
-            headers: { 'Content-Type': 'application/json' },
-        });
+    if (!location) {
+        showAnAlert("Please type in a location");
+        return;
+    }
 
-        if (response.ok) {
-            const jsonResponse = await response.json();
-            // Show the trip page for the user if they logged in
-            document.location.replace('/trip/' + jsonResponse.id);
-        } else {
-            alert('Failed to add trip.');
-        }
+    if (!startDate) {
+        showAnAlert("Please enter a start date");
+        return;
+    }
+
+    if (!endDate) {
+        showAnAlert("Please enter an end date");
+        return;
+    }
+
+    const response = await fetch('/trip/add', {
+        method: 'POST',
+        body: JSON.stringify({ location, startDate, endDate }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        const jsonResponse = await response.json();
+        // Show the trip page for the user if they logged in
+        document.location.replace('/trip/' + jsonResponse.id);
+    } else {
+        alert('Failed to add trip.');
     }
 });

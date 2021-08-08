@@ -5,19 +5,27 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#floatingPassword').value.trim();
 
     // Make sure the username and password are filled in
-    if (username && password) {
-        const response = await fetch('/api/users/login', {
-            method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: { 'Content-Type': 'application/json' },
-        });
+    if (!username) {
+        showAnAlert("Please enter your username");
+        return;
+    }
 
-        if (response.ok) {
-            // Show the trip page for the user if they logged in
-            document.location.replace('/trip');
-        } else {
-            alert('Failed to log in.');
-        }
+    if (!password) {
+        showAnAlert("Please enter your password");
+        return;
+    }
+
+    const response = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        // Show the trip page for the user if they logged in
+        document.location.replace('/trip');
+    } else {
+        showAnAlert('Incorrect password or username.');
     }
 };
 
